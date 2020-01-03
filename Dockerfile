@@ -1,7 +1,5 @@
-FROM nephatrine/alpine-s6:latest
+FROM nephatrine/alpine-s6:testing
 LABEL maintainer="Daniel Wolf <nephatrine@gmail.com>"
-
-ARG DRONE_VERSION=v1.6.3
 
 RUN echo "====== INSTALL PACKAGES ======" \
  && apk add \
@@ -15,8 +13,6 @@ RUN echo "====== INSTALL PACKAGES ======" \
  && echo "====== COMPILE DRONE ======" \
  && cd /usr/src \
  && git clone https://github.com/drone/drone && cd drone \
- && git fetch && git fetch --tags \
- && git checkout "$DRONE_VERSION" \
  && go install -ldflags='-w -s' -tags nolimit ./cmd/drone-server \
  && mv /root/go/bin/drone-server /usr/bin/ \
  && go install -ldflags='-w -s' ./cmd/drone-controller \
@@ -35,5 +31,5 @@ RUN echo "====== INSTALL PACKAGES ======" \
  && apk del --purge .build-drone \
  && cd /usr/src && rm -rf /root/go /tmp/* /usr/src/* /var/cache/apk/*
 
-EXPOSE 3000/tcp 8080/tcp
+EXPOSE 8080/tcp
 COPY override /
