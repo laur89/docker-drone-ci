@@ -14,6 +14,7 @@ steps:
   - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/drone-ci:testing
   - docker tag pdr.nephatrine.net/nephatrine/drone-ci:testing nephatrine/drone-ci:testing
   - HOME=/mnt/config/home docker push nephatrine/drone-ci:testing
+  - docker rmi pdr.nephatrine.net/nephatrine/drone-ci:testing
 
 ---
 kind: pipeline
