@@ -26,5 +26,6 @@ RUN echo "====== COMPILE DRONE ======" \
  && cd /usr/src && rm -rf /root/go /usr/src/* \
  && apk del --purge .build-drone && rm -rf /var/cache/apk/*
 
-EXPOSE 8080/tcp
 COPY override /
+
+EXPOSE 8080/tcp
