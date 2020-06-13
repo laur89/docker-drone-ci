@@ -28,9 +28,14 @@ steps:
     message: "Automated build of **{{repo.name}}:{{commit.branch}}** has returned [{{build.status}}]({{build.link}})."
     username: DroneCI
     webhook_id:
-      from_secret: webhook-id
+      from_secret: wh-infra-id
     webhook_token:
-      from_secret: webhook-token
+      from_secret: wh-infra-tok
 
 depends_on:
 - default
+
+trigger:
+  status:
+  - success
+  - failure
