@@ -10,7 +10,7 @@ platform:
 steps:
 - name: build
   commands:
-  - docker build --pull -t pdr.nephatrine.net/nephatrine/drone-ci:testing .
+  - docker build -t pdr.nephatrine.net/nephatrine/drone-ci:testing .
   - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/drone-ci:testing
   - docker tag pdr.nephatrine.net/nephatrine/drone-ci:testing nephatrine/drone-ci:testing
   - HOME=/mnt/config/home docker push nephatrine/drone-ci:testing
@@ -42,6 +42,6 @@ trigger:
 
 ---
 kind: signature
-hmac: ee014c2fd75a34e9cf7492182db3cb44ff22540a5b99bca2990c1de75fd0e211
+hmac: a12a602131c885a6a27c8c9c45d3068da40511ba1ef5a94c65b9334a89370532
 
 ...
