@@ -13,11 +13,11 @@ RUN echo "====== COMPILE DRONE ======" \
  && git -C /usr/src clone --depth=1 https://github.com/drone/drone && cd /usr/src/drone \
  && go install -tags nolimit ./cmd/drone-server \
  && mv /root/go/bin/drone-server /usr/bin/ \
- && go install ./cmd/drone-agent \
- && mv /root/go/bin/drone-agent /usr/bin/ \
  && git -C /usr/src clone --depth=1 https://github.com/drone/drone-cli && cd /usr/src/drone-cli \
  && go install ./... \
  && mv /root/go/bin/drone /usr/bin/ \
+ && git -C /usr/src clone --depth=1 https://github.com/drone-runners/drone-runner-docker && cd /usr/src/drone-runner-docker \
+ && go build -o /usr/bin/drone-runner-docker \
  && git -C /usr/src clone --depth=1 https://github.com/drone-runners/drone-runner-exec && cd /usr/src/drone-runner-exec \
  && go build -o /usr/bin/drone-runner-exec \
  && cd /usr/src && rm -rf /root/go /usr/src/* \
