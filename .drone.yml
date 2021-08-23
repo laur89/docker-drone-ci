@@ -10,11 +10,11 @@ platform:
 steps:
 - name: build
   commands:
-  - docker build -t pdr.nephatrine.net/nephatrine/drone-ci:testing .
-  - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/drone-ci:testing
-  - docker tag pdr.nephatrine.net/nephatrine/drone-ci:testing nephatrine/drone-ci:testing
-  - HOME=/mnt/config/home docker push nephatrine/drone-ci:testing
-  - docker rmi pdr.nephatrine.net/nephatrine/drone-ci:testing
+  - docker build -t pdr.nephatrine.net/nephatrine/drone-ci:latest .
+  - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/drone-ci:latest
+  - docker tag pdr.nephatrine.net/nephatrine/drone-ci:latest nephatrine/drone-ci:latest
+  - HOME=/mnt/config/home docker push nephatrine/drone-ci:latest
+  - docker rmi pdr.nephatrine.net/nephatrine/drone-ci:latest
 
 ---
 kind: pipeline
@@ -24,7 +24,7 @@ steps:
 - name: notify
   image: appleboy/drone-discord
   settings:
-    avatar_url: https://files.nephatrine.net/Images/Buttons/Drone.png
+    avatar_url: https://nephatrine.net/images/buttons/drone-ci.png
     message: "Automated build of **{{repo.name}}:{{commit.branch}}** has returned [{{build.status}}]({{build.link}})."
     username: DroneCI
     webhook_id:
@@ -42,6 +42,6 @@ trigger:
 
 ---
 kind: signature
-hmac: a12a602131c885a6a27c8c9c45d3068da40511ba1ef5a94c65b9334a89370532
+hmac: bf9395e77cf89073e4583f3a540dbf54bd73afc24fd273708008403d40bca14b
 
 ...
