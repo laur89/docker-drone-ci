@@ -10,11 +10,11 @@ platform:
 steps:
 - name: build
   commands:
-  - docker build -t pdr.nephatrine.net/nephatrine/drone-ci:latest .
-  - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/drone-ci:latest
-  - docker tag pdr.nephatrine.net/nephatrine/drone-ci:latest nephatrine/drone-ci:latest
-  - HOME=/mnt/config/home docker push nephatrine/drone-ci:latest
-  - docker rmi pdr.nephatrine.net/nephatrine/drone-ci:latest
+  - docker build -t pdr.nephatrine.net/nephatrine/drone-ci:testing .
+  - HOME=/mnt/config/home docker push pdr.nephatrine.net/nephatrine/drone-ci:testing
+  - docker tag pdr.nephatrine.net/nephatrine/drone-ci:testing nephatrine/drone-ci:testing
+  - HOME=/mnt/config/home docker push nephatrine/drone-ci:testing
+  - docker rmi pdr.nephatrine.net/nephatrine/drone-ci:testing
 
 ---
 kind: pipeline
